@@ -24,7 +24,10 @@ account_input = driver.find_elements_by_css_selector("input#username")
 account_input[0].send_keys(etoro_account)
 password_input = driver.find_elements_by_css_selector("input#password")
 password_input[0].send_keys(etoro_password)
-
 time.sleep(1)
+
+# login_btn = driver.find_elements_by_css_selector("button#login-sts-btn-sign-in")
+# print(login_btn)
+# time.sleep(1)
 
 # driver.close()
