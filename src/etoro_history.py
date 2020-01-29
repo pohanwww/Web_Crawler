@@ -69,13 +69,13 @@ def plotcoin(closeprice):
     ax1.xaxis.set_major_locator(majorXLocator)
     ax1.xaxis.set_major_formatter(majorXFormatter)
     ax1.xaxis.set_minor_locator(minorXLocator)
-    plt.savefig('bitcoin.png')   # save the figure to file
+    plt.savefig('oil.png')   # save the figure to file
     plt.close(fig)    # close the figure
 
 
 conn = httplib.HTTPSConnection('candle.etoro.com')
 # 480 is 480 periods of 1 hour, 100000 is Bitcoin
-conn.request("GET", "/candles/asc.json/OneMinute/480/100000")
+conn.request("GET", "/candles/asc.json/OneMinute/480/17")
 response = conn.getresponse()
 data = response.read()
 print(data)
