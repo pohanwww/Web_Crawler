@@ -20,33 +20,19 @@ for instrument_id in instrument_id_list:
             df_new = pd.DataFrame(content['Candles'][0]['Candles'])
             try:
                 df_old = pd.read_csv('./etoro_data/' + instrument_id + '_' + time_mode + '.csv')
-                print('--')
-                print(time_mode, instrument_id)
-                # print(df_new[df_new['FromDate'] == df_old['FromDate'][0]].index[0])
                 try:
-                    print('hi',df_old['FromDate'][0])
-                    print(df_new.head())
-                    print(df_new[df_new['FromDate'] == df_old['FromDate'][0]])
+                    # print(df_new[df_new['FromDate'] == df_old['FromDate'][0]])
                     index_ = df_new[df_new['FromDate'] == df_old['FromDate'][0]].index[0]
-                    print('--')
-                    print(index_)
                     df_old_drop = df_old.drop(index=0, axis=0)
-                    print('1')
                     index_ = index_ + 1
-                    print('2')
                     # print(df_new.drop(df_old.index[index_:]).count())
-                    
-                    # print(df_old_drop.count())
                     df_new_drop = df_new.drop(index=[index_,], axis=0)
-                    print('3')
                     new = pd.concat([df_new_drop,df_old_drop],axis=0, ignore_index = True)
-                    # print(new.count())
-                    
                     new.to_csv('./etoro_data/' + instrument_id + '_' + time_mode + '.csv', index=False)
                 except:
                     print('process error')
             except:
                 print('There is no data of {}, {}'.format(instrument_id, time_mode))
-                df_new.to_csv('./etoro_data/' + instrument_id + '_' + time_mode + '.csv', index=False)
+                # df_new.to_csv('./etoro_data/' + instrument_id + '_' + time_mode + '.csv', index=False)
         except:
             print('api error')
