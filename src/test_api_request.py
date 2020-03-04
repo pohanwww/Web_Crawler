@@ -30,7 +30,7 @@ for instrument_id in instrument_id_list:
                     new = pd.concat([df_new_drop,df_old_drop],axis=0, ignore_index = True)
                     new.to_csv('./etoro_data/' + instrument_id + '_' + time_mode + '.csv', index=False)
                 except:
-                    print('process error')
+                    print('process error {}, {}'.format(instrument_id, time_mode))
             except:
                 print('There is no data of {}, {}'.format(instrument_id, time_mode))
                 # df_new.to_csv('./etoro_data/' + instrument_id + '_' + time_mode + '.csv', index=False)
